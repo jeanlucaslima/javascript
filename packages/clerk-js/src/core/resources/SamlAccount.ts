@@ -1,4 +1,5 @@
 import type { SamlAccountJSON, SamlAccountResource, VerificationResource } from '@clerk/types';
+import type { SamlIdpSlug } from '@clerk/types';
 
 import { BaseResource } from './Base';
 import { Verification } from './Verification';
@@ -8,7 +9,7 @@ import { Verification } from './Verification';
  */
 export class SamlAccount extends BaseResource implements SamlAccountResource {
   id!: string;
-  provider = '';
+  provider = 'saml_custom' as SamlIdpSlug;
   emailAddress = '';
   firstName = '';
   lastName = '';
@@ -27,7 +28,7 @@ export class SamlAccount extends BaseResource implements SamlAccountResource {
     }
 
     this.id = data.id;
-    this.provider = data.provider;
+    this.provider = data.provider as SamlIdpSlug;
     this.emailAddress = data.email_address;
     this.firstName = data.first_name;
     this.lastName = data.last_name;

@@ -9,6 +9,7 @@ type CSSPropertiesWithMultiValues = { [K in keyof CSSProperties]: CSSProperties[
 type CSSPseudos = { [K in CSS.Pseudos as `&${K}`]?: CSSObject };
 
 interface CSSObject extends CSSPropertiesWithMultiValues, CSSPseudos {}
+
 type UserDefinedStyle = string | CSSObject;
 
 type Shade = '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
@@ -76,6 +77,7 @@ export type ProfileSectionId =
   | 'emailAddresses'
   | 'phoneNumbers'
   | 'connectedAccounts'
+  | 'enterpriseAccounts'
   | 'web3Wallets'
   | 'password'
   | 'mfa'
@@ -175,6 +177,8 @@ export type ElementsConfig = {
   socialButtonsBlockButtonText: WithOptions<OAuthProvider | Web3Provider, never, never>;
   socialButtonsBlockButtonArrow: WithOptions<OAuthProvider | Web3Provider, never, never>;
   socialButtonsProviderIcon: WithOptions<OAuthProvider | Web3Provider, LoadingState, never>;
+
+  enterpriseButtonsProviderIcon: WithOptions<string, LoadingState, never>;
 
   alternativeMethods: WithOptions<never, never, never>;
   alternativeMethodsBlockButton: WithOptions<OAuthProvider | Web3Provider, LoadingState, never>;
